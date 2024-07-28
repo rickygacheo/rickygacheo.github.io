@@ -1,6 +1,7 @@
 ---
 title: 总结
 layout: home
+nav_order: 1
 ---
 从哪天开始在这里开始记录笔记
 ## 标题怎么开始
