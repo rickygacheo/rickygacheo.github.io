@@ -1,0 +1,6 @@
+<component name="CopyrightManager">
+  <copyright>
+    <option name="notice" value="#set( &amp;#36;oldDate = &amp;#36;originalComment.match(&quot;Copyright [^\d]+ (\d+)&quot;, 1, &quot;-&quot;) )&#10;Copyright (c) Huawei Technologies Co., Ltd. #if( &quot;&amp;#36;!oldDate&quot; == &quot;&quot; )&amp;#36;{today.year}-#else&amp;#36;oldDate#end&amp;#36;{today.year}. All rights reserved." />
+    <option name="myName" value="copyright" />
+  </copyright>
+</component>

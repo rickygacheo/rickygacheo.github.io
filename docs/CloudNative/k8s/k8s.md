@@ -3,7 +3,7 @@ layout: default
 title: k8s
 nav_order: 4
 has_children: true
-permalink: /docs/k8s
+permalink: /docs/CloudNative/k8s
 ---
 
 # k8s集群实战
