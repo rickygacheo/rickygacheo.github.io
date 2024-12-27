@@ -1,10 +1,26 @@
 ---
-title: 总结
+title: 首页
 layout: home
 nav_order: 1
 ---
-从哪天开始在这里开始记录笔记
-## 标题怎么开始
+## 知识总结
+再好的知识，如果只学习，那么很快就会忘掉，那如果需要加深记忆，需要实践(真实应用到生产中，仅仅学习性的实践，也比较容易忘掉)
+实践后，还需要及时做总结，否则知识也就变成了一段回忆，细节也越来越模糊。因此，记录很重要！
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 This is a *bare-minimum* template to create a Jekyll site that uses the [Just the Docs] theme. You can easily set the created site to be published on [GitHub Pages] – the [README] file explains how to do that, along with other details.
 
 ----
