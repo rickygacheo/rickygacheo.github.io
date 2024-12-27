@@ -67,6 +67,25 @@ omitNorms设置为true，归一化参数，反应了词频和文档频率：
 omitPositions=true不涉及高亮的显示，不需要索引term的位置信息
 通过设置docValue=true，提升facet查询的性能
 solr权威指南2.5.2章节
+Solr的Replica分别有哪几种模式：NRT, TLOG, PULL，分别适用于什么场景？
+Solr的Document Routing机制是什么：暂时未懂 // TODO
+Ignoring Commits from client applications in solrcloud
+Achieved Replication Factor:solr会返回写入成功的replica数量，如果不满足要求，客户短根据这个数量将异常写入日志，等到恢复，再重新写入
+distrib.singlePass Parameter：
+Avoiding Distributed Deadlock：最大线程数要确保能够满足客户端所发起的线程数，比如：如果最大2个线程，那么客户端发起两个请求后，没有其他线程可用，则会触发死锁，等待可用线程
+NodeRole有哪些：
+    DataNode：数据节点
+    OverseerNode：集群管理，分片管理，任务调度，配置管理；可以和DataNode同时存在，也可以
+    CoordinateNode：接收请求，索引分片，无状态
+Index更新，通过Json方式更新
+Partial Document Updates：
+Boosting a Term with "^": 通过^提升相关性，
+DisMax Query Parser:支持自定义score，以及一般不返回错误，不需要特别规范的格式
+
+solr做过什么优化？？
+
+遗留问题：
+1、怎么支持phrase检索？
 
 ### 讲一讲ElasticSearch
 
@@ -78,10 +97,8 @@ mongodb的分片大小建议控制在50GB以内，过大不利于分片迁移恢
 
 mongo优化：
 查询性能优化：
-1、mongo的实体关系对应：静态库的人脸特征，是用嵌套还是引用
-2、索引未建立导致的慢查询
-3、循环中查询mongo，导致的tps暴高
-4、升级扩容，mongo无法加到分片中，权限配置生效失败
+1、SDK查询动态库，采用时间轴模式，优化查询性能。由于之前动态库数量较小直接使用skip+limit分页模式，在后来系统支持的数据规模到几十亿，在跳转到很大的页数时，查询非常耗时，改变了分页的方案，采用常用的时间轴模式，
+按照页面数量+GroupSize进行分组，每组提前获取最后一个的id，组内的数据依旧按照skip+limit，这样会跳过较少的数据，从而提升10倍-100倍的查询性能。
 
 ### 短链高并发设计方案
 发号：给每个长连接发放一个唯一的id，然后将id转为62进制或者128进制，即为短链
@@ -89,4 +106,19 @@ mongo优化：
 发号器：通过Snowflake算法，0+时间+机器id+序列号生成唯一id，id作为短链url
 建议每台机器上本地缓存映射关系，通过lru算法淘汰old url，再通过bloomfilter确认是否分配过，分配过先从redis获取映射关系，再从数据库获取映射关系，
 如果没有分配过，通过算法分配，写入到数据库中，写入到redis中，需要通过redis分布式锁确保长链分配时锁定
+
+### 设备介入模块内存优化
+缓存30w设备接入，60w摄像机推送记录：
+设备缓存在系统启动完成预热后，dump的设备缓存总保留大小低于1GB，相比当前占用2GB内存，减少50%
+缓存预热时间不能高于当前耗时3min
+优化点：
+1、字符串编码优化：JDK8是如何保存String的：32位对象头+4bit*n个char+对齐8bit; JDK9:32位对象头+1-2bit*n+8bit对齐位，1个bit为Latin1的字符集，2bit为utf-16字符集
+    优化方案：由于我们的编码全部为us_ascii字符集的标准，可以在1个bit表示，所以我们使用ascii编码后保存到bit中
+2、重复字符串引用优化：外域设备信息是目录树的形式，域编码，目录编码deviceid，等都是重复的。重复的字符串改为引用，通过自定义AsciiCode类，在设备信息加载实例化时，new AsciiCode时通过内部的弱引用缓存<AsciiCode, WeakReference<AsciiCode>>获取，没有时创新新的，有的话就直接返回缓存，如果gc回收时，asciicode没有直接引用关系，weakhashmap可以直接回收掉。
+3、JVM开启引用的指针压缩
+
+### 检索链路性能优化
+1、检索一年的动态库数据，MCS检索慢，修改索引结构
+2、返回大量相似度90以上的动态库数据，如何在mongo里查询返回快速？
+
 ----
