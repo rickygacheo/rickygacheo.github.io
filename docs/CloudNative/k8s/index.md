@@ -2,6 +2,7 @@
 layout: default
 title: k8s
 nav_order: 4
+parent: CloudNative
 ---
 
 # k8s集群实战
