@@ -1,8 +1,4 @@
----
-layout: default
-title: 面试技术准备
-nav_order: 3
----
+
 ## 讲讲Redis
 ### Redis的基础能力
 Redis是分布式内存数据库，单节点能够满足10W+的QPS，是作为分布式缓存所常用的组件，它QPS强的原因有几个：
