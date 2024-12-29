@@ -2,9 +2,7 @@
 layout: default
 title: Service
 nav_order: 4
-has_children: false
 parent: k8s
-permalink: /docs/CloudNative/k8s/service
 ---
 ## Service问答式学习
 ### Service是什么？

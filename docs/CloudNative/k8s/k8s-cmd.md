@@ -1,10 +1,8 @@
 ---
 layout: default
 title: k8s-cmd
-nav_order: 4
-has_children: false
+nav_order: 1
 parent: k8s
-permalink: /docs/CloudNative/k8s/cmd
 ---
 
 ```
