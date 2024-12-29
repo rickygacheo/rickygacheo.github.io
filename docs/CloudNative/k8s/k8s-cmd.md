@@ -1,6 +1,11 @@
-
-
-
+---
+layout: default
+title: k8s-cmd
+nav_order: 4
+has_children: false
+parent: k8s
+permalink: /docs/CloudNative/k8s/cmd
+---
 
 ```
 kubectl config get-contexts

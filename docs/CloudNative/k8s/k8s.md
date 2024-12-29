@@ -3,6 +3,7 @@ layout: default
 title: k8s
 nav_order: 4
 has_children: true
+parent: CloudNative
 permalink: /docs/CloudNative/k8s
 ---
 
