@@ -18,6 +18,7 @@ permalink: /docs/CloudNative
 | 云原生      | 微服务灰度升级，蓝绿升级   | [总结链接]() |
 | 云原生      | Sidecar        | [总结链接]() |
 | 云原生      | K8S cmd使用总结    | [总结链接]() |
+| 云原生      | 如何构建云服务        | [总结链接]() |
 | APIG     | APIGW架构        |          |
 | LB-NGINX |                |          |
 
