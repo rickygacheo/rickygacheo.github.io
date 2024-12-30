@@ -1,10 +1,3 @@
----
-layout: default
-title: dataware
-nav_order: 5
-has_children: true
-permalink: /docs/dataware
----
 
 # 关系总览
 

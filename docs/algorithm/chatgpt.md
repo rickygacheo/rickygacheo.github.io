@@ -1,9 +1,4 @@
----
-layout: default
-title: chatgpt
-parent: algorithm
-nav_order: 2
----
+
 ## 大模型的原理
 
 ### transformer

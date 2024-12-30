@@ -1,9 +1,3 @@
----
-layout: default
-title: mongo基础知识
-parent: mongo
-nav_order: 1
----
 
 # Mongo基础知识
 ## Mongo分片

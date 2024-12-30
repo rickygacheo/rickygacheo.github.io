@@ -1,10 +1,4 @@
----
-layout: default
-title: redis
-nav_order: 5
-has_children: true
-permalink: /docs/redis
----
+
 
 # 秒杀场景设计
 秒杀场景重点要考虑的问题就是高并发问题，我们要在系统的各个环节考虑这个问题

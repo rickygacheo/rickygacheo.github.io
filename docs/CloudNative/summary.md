@@ -1,10 +1,4 @@
----
-layout: default
-title: CloudNative
-nav_order: 4
-has_children: true
-permalink: /docs/CloudNative
----
+
 # SummaryList
 
 

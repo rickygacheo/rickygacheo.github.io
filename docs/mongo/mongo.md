@@ -1,10 +1,3 @@
----
-layout: default
-title: mongo
-nav_order: 4
-has_children: true
-permalink: /docs/mongo
----
 
 # UI Components
 

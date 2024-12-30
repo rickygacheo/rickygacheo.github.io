@@ -1,10 +1,4 @@
----
-layout: default
-title: algorithm
-nav_order: 4
-has_children: true
-permalink: /docs/algorithm
----
+
 
 # Numpy使用
 numpy.random.seed函数：seed种子在同一次运行过程中，设置相同的种子数，生成的随机数会是相同的
